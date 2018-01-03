@@ -14,6 +14,7 @@ const bluebird = require('bluebird');
 // Routes
 const index = require('./routes/index');
 const users = require('./routes/users');
+const api = require('./routes/api.route');
 
 // Express
 const app = express();
@@ -48,8 +49,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Use routes
 app.use('/', index);
 app.use('/users', users);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
